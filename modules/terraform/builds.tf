@@ -23,7 +23,7 @@ resource "google_cloudbuild_trigger" "terraform" {
   }
 
   service_account = google_service_account.terraform.id
-  filename        = "modules/terraform/${each.key}.cloudbuild.yaml"
+  filename        = "${var.config_root_dir}/modules/terraform/${each.key}.cloudbuild.yaml"
   substitutions = {
     _CHDIR = var.config_root_dir
   }
